@@ -1,0 +1,18 @@
+class Solution {
+    public int countMaxOrSubsets(int[] nums) {
+        int maxor=0;
+        for(int num:nums){
+            maxor |=num;
+        }
+        return backtrack(nums,maxor,0,0);
+    }
+    public int backtrack(int[] nums,int maxor,int index,int curror){
+        if(index==nums.length){
+            return maxor==curror?1:0;
+        }
+        if(maxor==curror){
+            return 1<<(nums.length-index);
+        }
+        return backtrack(nums,maxor,index+1,curror|nums[index])+backtrack(nums,maxor,index+1,curror);
+    }
+}
