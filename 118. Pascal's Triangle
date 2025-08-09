@@ -1,0 +1,18 @@
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> triangle= new ArrayList<List<Integer>>();
+        triangle.add(new ArrayList<>());
+        triangle.get(0).add(1);
+        for(int rown=1;rown<numRows;rown++){
+            List<Integer> row =new ArrayList<>();
+            List<Integer> prev=triangle.get(rown-1);
+            row.add(1);
+            for(int j=1;j<rown;j++){
+                row.add(prev.get(j-1)+prev.get(j));
+            }
+            row.add(1);
+            triangle.add(row);
+        }
+        return triangle;
+    }
+}
