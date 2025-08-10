@@ -1,0 +1,17 @@
+class Solution {
+    public boolean reorderedPowerOf2(int n) {
+        String ans=sortdigit(n);
+        for(int i=0;i<32;i++){
+            int org=1<<i;
+            if(sortdigit(org).equals(ans)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public String sortdigit(int n){
+        char[] a=String.valueOf(n).toCharArray();
+        Arrays.sort(a);
+        return new String(a);
+    }
+}
